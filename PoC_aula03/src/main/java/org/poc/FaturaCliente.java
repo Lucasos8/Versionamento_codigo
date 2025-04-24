@@ -1,3 +1,5 @@
+package PoC_aula03.src.main.java.org.poc;
+
 public class FaturaCliente {
     private int id;
     private Cliente cliente;
