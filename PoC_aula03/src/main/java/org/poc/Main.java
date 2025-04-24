@@ -1,17 +1,29 @@
-package org.poc;
+package PoC_aula03.src.main.java.org.poc;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Criando um cliente
+        Cliente cliente1 = new Cliente(1, "Maria", 10, "f");
+        System.out.println(cliente1);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Criando uma fatura para o cliente
+        FaturaCliente fatura1 = new FaturaCliente(101, cliente1, 500.0);
+        System.out.println(fatura1);
+        System.out.printf("Valor com desconto: R$%.2f%n", fatura1.getValorComDesconto());
+
+        // Criando uma conta para o cliente
+        ContaCliente conta1 = new ContaCliente(201, cliente1);
+        System.out.println(conta1);
+
+        // Adicionando depósito
+        conta1.addDeposito(1000.0);
+        System.out.printf("Saldo após depósito: R$%.2f%n", conta1.getSaldo());
+
+        // Tentando retirar um valor
+        double saldoAtual = conta1.subSaldo(200.0);
+        System.out.printf("Saldo após retirada: R$%.2f%n", saldoAtual);
+
+        // Tentando retirar um valor maior que o saldo disponível
+        conta1.subSaldo(900.0);
     }
 }
